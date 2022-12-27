@@ -1,16 +1,19 @@
 #include <iostream>
-#include <List.h>
+#include <LinkedList.cpp>
 
 int main() 
 {
-	List<int> IntegerList(2, 3, 5, 7, 10);
+	LinkedList<int>* IntegerList = new LinkedList<int>(true, 2, 3, 5, 7, 10);
 
-	List<char> CharList('A', 'b', 'c', 'd');
+	LinkedList<char>* CharList = new LinkedList<char>(false, 'A', 'b', 'c', 'd');
 
-	IntegerList.InsertNodeAtLocation(22, 1);
-	
-	CharList.RemoveNodeAtLocation(2);
+	LinkedList<float>* FloatList = new LinkedList<float>(true, 2.2f, 3.55f, 6.56f);
 
-	IntegerList.PrintEntireList();
-	CharList.PrintEntireList();
+	IntegerList->InsertNodeAtLocation(22, 1);
+	CharList->RemoveNodeAtLocation(2);
+	FloatList->RemoveHeadNode();
+
+	IntegerList->PrintEntireList();
+	CharList->PrintEntireList();
+	FloatList->PrintEntireList();
 }
