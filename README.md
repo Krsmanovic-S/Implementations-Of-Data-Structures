@@ -1,10 +1,14 @@
 # C++ Implementation of the Linked List Data Structure
 
-Right now, only singly linked lists are implemented with the following features:
+Supports singly and doubly linked lists that are implemented with the following features:
 
   * Append a node
   
-  * Remove ending node
+  * Prepend a node
+  
+  * Remove tail node
+  
+  * Remove head node
   
   * Insert a node in a desired location
   
