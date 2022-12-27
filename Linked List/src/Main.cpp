@@ -1,4 +1,3 @@
-#include <iostream>
 #include <LinkedList.cpp>
 
 int main() 
@@ -16,4 +15,8 @@ int main()
 	IntegerList->PrintEntireList();
 	CharList->PrintEntireList();
 	FloatList->PrintEntireList();
+
+	delete IntegerList;
+	delete CharList;
+	delete FloatList;
 }

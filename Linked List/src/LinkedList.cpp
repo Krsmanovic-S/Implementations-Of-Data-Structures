@@ -1,4 +1,5 @@
 #include <LinkedList.h>
+#include <iostream>
 
 template<typename T>
 template<typename ...Args>
