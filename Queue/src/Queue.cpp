@@ -2,13 +2,13 @@
 #include <iostream>
 
 template <typename T>
-void Queue<T>::PrintQueue()
+void Queue<T>::printQueue()
 {
 	std::cout << "Queue values from back to front: ";
 
-	for (int i = m_QueueSize - 1; i >= 0; i--)
+	for (int i = m_queueSize - 1; i >= 0; i--)
 	{
-		std::cout << m_QueueVector[i];
+		std::cout << m_queueVector[i];
 
 		if (i != 0) { std::cout << ", "; }
 		else { std::cout << "." << '\n'; }
@@ -16,19 +16,19 @@ void Queue<T>::PrintQueue()
 }
 
 template <typename T>
-void Queue<T>::Push(T Val)
+void Queue<T>::push(T data)
 {
-	m_QueueVector.push_back(Val);
-	m_QueueSize++;
+	m_queueVector.push_back(data);
+	m_queueSize++;
 }
 
 template <typename T>
-void Queue<T>::Pop()
+void Queue<T>::pop()
 {
-	if (m_QueueSize > 0)
+	if (m_queueSize > 0)
 	{
-		m_QueueVector.erase(m_QueueVector.begin());
-		m_QueueSize--;
+		m_queueVector.erase(m_queueVector.begin());
+		m_queueSize--;
 	}
 	else { std::cerr << "Cannot pop from an empty queue."; }
 }

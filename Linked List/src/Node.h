@@ -14,70 +14,70 @@ public:
 	/// Constructor that just sets the value of the node 
 	/// while the next Node is explicitly set to nullptr.
 	/// </summary>
-	/// <param name="NodeValue:"> Templated parameter for the value of the node. </param>
-	Node(T NodeValue) :
-		m_NodeValue(NodeValue), m_NextNode(nullptr), m_PreviousNode(nullptr) {};
+	/// <param name="inputData:"> Templated parameter for the value of the node. </param>
+	Node(T inputData) :
+		m_nodeData(inputData), m_nextNode(nullptr), m_previousNode(nullptr) {};
 
 	/// <summary>
 	/// Constructor for setting both the value  
 	/// and the next node for the created one.
 	/// </summary>
-	/// <param name="NodeValue:"> Templated parameter for the value of the node. </param>
-	/// <param name="NextNode:"> Node to which this one is pointing to. </param>
-	Node(T NodeValue, Node* NextNode) :
-		m_NodeValue(NodeValue), m_NextNode(NextNode), m_PreviousNode(nullptr) {};
+	/// <param name="inputData:"> Templated parameter for the value of the node. </param>
+	/// <param name="nextNode:"> Node to which this one is pointing to. </param>
+	Node(T inputData, Node* nextNode) :
+		m_nodeData(inputData), m_nextNode(nextNode), m_previousNode(nullptr) {};
 
 	/// <summary>
 	/// Constructor for setting the value, the next node 
 	/// and the previous node for the created one.
 	/// </summary>
-	/// <param name="NodeValue:"> Templated parameter for the value of the node. </param>
-	/// <param name="NextNode:"> Node to which this one is pointing to. </param>
-	/// <param name="PrevNode:"> Previous node to which this one is pointing to. </param>
-	Node(T NodeValue, Node* NextNode, Node* PrevNode) :
-		m_NodeValue(NodeValue), m_NextNode(NextNode), m_PreviousNode(PrevNode) {};
+	/// <param name="inputData:"> Templated parameter for the value of the node. </param>
+	/// <param name="nextNode:"> Node to which this one is pointing to. </param>
+	/// <param name="nextNode:"> Previous node to which this one is pointing to. </param>
+	Node(T inputData, Node* nextNode, Node* prevNode) :
+		m_nodeData(inputData), m_nextNode(nextNode), m_previousNode(prevNode) {};
 	
 	/// <summary>
-	/// Setter for the member m_NodeValue.
+	/// Setter for the member m_nodeData.
 	/// </summary>
-	/// <param name="InputValue:"> New value for the m_NodeValue. </param>
-	void SetNodeValue(T InputValue) { m_NodeValue = InputValue; }
+	/// <param name="inputData:"> New value for the m_NodeValue. </param>
+	void setNodeData(T inputData) { m_nodeData = inputData; }
 
 	/// <summary>
-	/// Setter for the member m_NextNode.
+	/// Setter for the member m_nextNode.
 	/// </summary>
-	/// <param name="InputValue:"> New Node to which the m_NextNode will point to. </param>
-	void SetNextNode(Node* NodeToSet) { m_NextNode = NodeToSet; }
+	/// <param name="nodeToSet:"> New Node to which the m_NextNode will point to. </param>
+	void setNextNode(Node* nodeToSet) { m_nextNode = nodeToSet; }
 
 	/// <summary>
-	/// Setter for the member m_PreviousNode.
+	/// Setter for the member m_previousNode.
 	/// </summary>
-	/// <param name="NodeToSet:"> New node that the previous pointer of the current node will point to. </param>
-	void SetPreviousNode(Node* NodeToSet) { m_PreviousNode = NodeToSet; }
+	/// <param name="nodeToSet:"> New node that the previous pointer of the current node will point to. </param>
+	void setPreviousNode(Node* nodeToSet) { m_previousNode = nodeToSet; }
 
 	/// <returns> Node value by value. </returns>
-	T GetNodeValue() const { return m_NodeValue; }
+	T getNodeData() const { return m_nodeData; }
 
 	/// <returns> Node value by value. </returns>
-	T& GetNodeValueAsReference() { return m_NodeValue; }
+	T& getNodeDataAsReference() { return m_nodeData; }
 
 	/// <returns> Member variable representing the next node pointer. </returns>
-	Node<T>* GetNextNode() const { return m_NextNode; };
+	Node<T>* getNextNode() const { return m_nextNode; };
 
 	/// <returns> Member variable representing the previous node pointer. </returns>
-	Node<T>* GetPreviousNode() const { return m_PreviousNode; };
+	Node<T>* getPreviousNode() const { return m_previousNode; };
 
 private:
 
 	// Templated value that this node contains.
-	T m_NodeValue;
+	T m_nodeData;
 
 	// Pointer to the next node in the linked list structure.
-	Node* m_NextNode;
+	Node* m_nextNode;
 
 	/// <summary>
 	/// Pointer to the previous node in the linked list 
 	/// structure. Only used for doubly linked lists.
 	/// </summary>
-	Node* m_PreviousNode;
+	Node* m_previousNode;
 };

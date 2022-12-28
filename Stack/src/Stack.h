@@ -72,7 +72,7 @@ public:
 	};
 
 	/// <summary>
-	/// Prints the stack in the top to bottom order.
+	/// Prints the stack in the top (last) to bottom (first) order.
 	/// </summary>
 	void PrintStack();
 

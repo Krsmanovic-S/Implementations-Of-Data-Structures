@@ -2,33 +2,35 @@
 
 int main()
 {
-	Queue<int>* IntQueue = new Queue<int>();
-	Queue<char>* CharQueue = new Queue<char>();
+	Queue<int>* intQueue = new Queue<int>();
+	Queue<char>* charQueue = new Queue<char>();
 
-	IntQueue->Push(2);
-	IntQueue->Push(8);
-	IntQueue->Push(44);
-	IntQueue->Push(10);
+	intQueue->push(2);
+	intQueue->push(8);
+	intQueue->push(44);
+	intQueue->push(10);
 
-	IntQueue->Pop();
+	intQueue->pop();
 
-	for (Queue<int>::Iterator it = IntQueue->begin(); it != IntQueue->end(); ++it)
+	for (Queue<int>::Iterator it = intQueue->begin(); it != intQueue->end(); ++it)
 	{
 		std::cout << *it << " ";
 	}
 
 	std::cout << '\n' << '\n';
 
-	CharQueue->Push('a');
-	CharQueue->Push('C');
-	CharQueue->Push('d');
-	CharQueue->Push('h');
+	charQueue->push('a');
+	charQueue->push('C');
+	charQueue->push('d');
+	charQueue->push('h');
 
-	CharQueue->PrintQueue();
+	charQueue->printQueue();
 
-	CharQueue->Pop();
+	charQueue->pop();
 
-	std::cout << '\n' << CharQueue->Front() << '\n' << '\n';
+	std::cout << '\n' << charQueue->front() << '\n' << '\n';
 
-	CharQueue->PrintQueue();
+	charQueue->printQueue();
+
+	return 0;
 }

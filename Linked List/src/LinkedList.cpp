@@ -3,147 +3,147 @@
 
 template<typename T>
 template<typename ...Args>
-LinkedList<T>::LinkedList(bool DoubleLink, Args ... args)
+LinkedList<T>::LinkedList(bool doubleLink, Args ... args)
 {
-	std::initializer_list<T> InputList{ args... };
+	std::initializer_list<T> inputList{ args... };
 
-	m_IsDoublyLinked = DoubleLink;
+	m_isDoublyLinked = doubleLink;
 
-	m_ListSize = InputList.size();
+	m_listSize = inputList.size();
 
-	m_Head = new Node<T>(*(InputList.begin()));
+	m_head = new Node<T>(*(inputList.begin()));
 
-	if (m_ListSize == 1)
+	if (m_listSize == 1)
 	{
-		m_Tail = m_Head;
+		m_tail = m_head;
 		return;
 	}
 
-	Node<T>* CurrentNode = m_Head;
-	Node<T>* NextNode;
+	Node<T>* currentNode = m_head;
+	Node<T>* nextNode;
 
-	for (auto it = InputList.begin() + 1; it < InputList.end(); ++it)
+	for (auto it = inputList.begin() + 1; it < inputList.end(); ++it)
 	{
-		NextNode = new Node<T>(*it);
+		nextNode = new Node<T>(*it);
 
-		CurrentNode->SetNextNode(NextNode);
+		currentNode->setNextNode(nextNode);
 
-		CurrentNode = NextNode;
+		currentNode = nextNode;
 	}
 
-	m_Tail = CurrentNode;
+	m_tail = currentNode;
 }
 
 template<typename T>
-void LinkedList<T>::PrintEntireList() const
+void LinkedList<T>::printEntireList() const
 {
-	Node<T>* CurrentNode = m_Head;
+	Node<T>* currentNode = m_head;
 
 	std::cout << "List node values in Head to Tail order: ";
 
-	for (int i = 0; i < m_ListSize; i++)
+	for (int i = 0; i < m_listSize; i++)
 	{
-		std::cout << CurrentNode->GetNodeValue();
+		std::cout << currentNode->getNodeData();
 
-		if (i != m_ListSize - 1)
+		if (i != m_listSize - 1)
 		{
-			if (m_IsDoublyLinked == true) { std::cout << " <-> "; }
+			if (m_isDoublyLinked == true) { std::cout << " <-> "; }
 			else { std::cout << " -> "; }
 		}
 		else { std::cout << "." << '\n' << '\n'; };
 
-		CurrentNode = CurrentNode->GetNextNode();
+		currentNode = currentNode->getNextNode();
 	}
 }
 
 template<typename T>
-bool LinkedList<T>::IsCyclicList()
+bool LinkedList<T>::isCyclicList()
 {
-	if (m_Head == nullptr) { return false; }
+	if (m_head == nullptr) { return false; }
 
-	Node<T>* SlowPointer = m_Head;
-	Node<T>* FastPointer = m_Head;
+	Node<T>* slowPointer = m_head;
+	Node<T>* fastPointer = m_head;
 
-	while (SlowPointer != nullptr && FastPointer != nullptr)
+	while (slowPointer != nullptr && fastPointer != nullptr)
 	{
-		SlowPointer = SlowPointer->GetNextNode();
+		slowPointer = slowPointer->getNextNode();
 
-		FastPointer = FastPointer->GetNextNode();
+		fastPointer = fastPointer->getNextNode();
 
-		if (FastPointer != nullptr)
+		if (fastPointer != nullptr)
 		{
-			FastPointer = FastPointer->GetNextNode();
+			fastPointer = fastPointer->getNextNode();
 		}
 
-		if (SlowPointer == FastPointer) { return true; }
+		if (slowPointer == fastPointer) { return true; }
 	}
 
 	return false;
 }
 
 template<typename T>
-void LinkedList<T>::InsertNodeAtLocation(T NodeValue, int InsertPosition)
+void LinkedList<T>::insertNodeAtLocation(T nodeData, int insertPosition)
 {
-	if (InsertPosition < 0 || InsertPosition > m_ListSize - 1)
+	if (insertPosition < 0 || insertPosition > m_listSize - 1)
 	{
 		std::cerr << "Insert position is out of bounds, please enter a valid position.";
 		return;
 	}
 
-	if (InsertPosition == m_ListSize - 1) { return this->AppendNode(NodeValue); }
-	if (InsertPosition == 0) { return this->PrependNode(NodeValue); }
+	if (insertPosition == m_listSize - 1) { return this->appendNode(nodeData); }
+	if (insertPosition == 0) { return this->prependNode(nodeData); }
 
-	Node<T>* InsertNode = new Node<T>(NodeValue);
-	Node<T>* CurrentNode = m_Head;
-	Node<T>* NextNode = CurrentNode->GetNextNode();
+	Node<T>* insertNode = new Node<T>(nodeData);
+	Node<T>* currentNode = m_head;
+	Node<T>* nextNode = currentNode->getNextNode();
 
-	for (int i = 1; i < InsertPosition - 1; i++)
+	for (int i = 1; i < insertPosition - 1; i++)
 	{
-		CurrentNode = NextNode;
+		currentNode = nextNode;
 
-		NextNode = CurrentNode->GetNextNode();
+		nextNode = currentNode->getNextNode();
 	}
 
-	CurrentNode->SetNextNode(InsertNode);
+	currentNode->setNextNode(insertNode);
 
-	if (m_IsDoublyLinked == true)
+	if (m_isDoublyLinked == true)
 	{
-		InsertNode->SetPreviousNode(CurrentNode);
-		NextNode->SetPreviousNode(InsertNode);
+		insertNode->setPreviousNode(currentNode);
+		nextNode->setPreviousNode(insertNode);
 	}
 
-	InsertNode->SetNextNode(NextNode);
+	insertNode->setNextNode(nextNode);
 
 	return;
 }
 
 template<typename T>
-void LinkedList<T>::RemoveNodeAtLocation(int RemovePosition)
+void LinkedList<T>::removeNodeAtLocation(int removePosition)
 {
-	if (RemovePosition < 0 || RemovePosition > m_ListSize - 1)
+	if (removePosition < 0 || removePosition > m_listSize - 1)
 	{
 		std::cerr << "Insert position is out of bounds, please enter a valid position.";
 		return;
 	}
 
-	if (RemovePosition == m_ListSize - 1) { return this->RemoveTailNode(); }
-	if (RemovePosition == 0) { return this->RemoveHeadNode(); }
+	if (removePosition == m_listSize - 1) { return this->removeTailNode(); }
+	if (removePosition == 0) { return this->removeHeadNode(); }
 
-	Node<T>* CurrentNode = m_Head;
-	Node<T>* SecondNextNode = CurrentNode->GetNextNode()->GetNextNode();
+	Node<T>* currentNode = m_head;
+	Node<T>* secondNextNode = currentNode->getNextNode()->getNextNode();
 
-	for (int i = 1; i < RemovePosition; i++)
+	for (int i = 1; i < removePosition; i++)
 	{
-		CurrentNode = CurrentNode->GetNextNode();
+		currentNode = currentNode->getNextNode();
 
-		SecondNextNode = SecondNextNode->GetNextNode();
+		secondNextNode = secondNextNode->getNextNode();
 	}
 
-	if (m_IsDoublyLinked == true) { SecondNextNode->SetPreviousNode(CurrentNode); }
+	if (m_isDoublyLinked == true) { secondNextNode->setPreviousNode(currentNode); }
 
-	delete CurrentNode->GetNextNode();
+	delete currentNode->getNextNode();
 
-	CurrentNode->SetNextNode(SecondNextNode);
+	currentNode->setNextNode(secondNextNode);
 
-	m_ListSize--;
+	m_listSize--;
 }

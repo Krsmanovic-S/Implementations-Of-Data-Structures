@@ -2,22 +2,24 @@
 
 int main()
 {
-	Stack<int>* IntStack = new Stack<int>();
+	Stack<int>* intStack = new Stack<int>();
 
-	IntStack->Push(5);
-	IntStack->Push(7);
-	IntStack->Push(10);
+	intStack->Push(5);
+	intStack->Push(7);
+	intStack->Push(10);
 
-	for (Stack<int>::Iterator it = IntStack->begin(); it != IntStack->end(); ++it)
+	for (Stack<int>::Iterator it = intStack->begin(); it != intStack->end(); ++it)
 	{
 		std::cout << *it << " ";
 	}
 
 	std::cout << '\n' << '\n';
 
-	IntStack->Pop();
+	intStack->Pop();
 
-	std::cout << "Stack top: " << IntStack->Top() << '\n';
+	std::cout << "Stack top: " << intStack->Top() << '\n';
 
-	delete IntStack;
+	delete intStack;
+
+	return 0;
 }
