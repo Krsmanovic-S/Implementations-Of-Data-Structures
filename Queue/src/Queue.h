@@ -20,7 +20,7 @@ public:
 
 	void Pop();
 
-	T Top() const;
+	T Front() const;
 
 	bool Empty();
 

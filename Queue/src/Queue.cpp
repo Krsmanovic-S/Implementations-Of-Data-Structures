@@ -34,7 +34,7 @@ void Queue<T>::Pop()
 }
 
 template <typename T>
-T Queue<T>::Top() const
+T Queue<T>::Front() const
 {
 	return m_QueueSize > 0 ? m_QueueVector[m_QueueSize - 1] : 0;
 }

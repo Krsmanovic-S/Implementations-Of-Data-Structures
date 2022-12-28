@@ -14,7 +14,7 @@ int main()
 
 	IntQueue->Pop();
 
-	std::cout << '\n' << IntQueue->Top() << '\n' << '\n';
+	std::cout << '\n' << IntQueue->Front() << '\n' << '\n';
 
 	CharQueue->Push('a');
 	CharQueue->Push('C');
@@ -25,7 +25,7 @@ int main()
 
 	CharQueue->Pop();
 
-	std::cout << '\n' << CharQueue->Top() << '\n' << '\n';
+	std::cout << '\n' << CharQueue->Front() << '\n' << '\n';
 
 	CharQueue->PrintQueue();
 }
