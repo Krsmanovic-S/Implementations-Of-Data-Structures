@@ -18,7 +18,7 @@ Supports singly and doubly linked lists that are implemented with the following 
   
   * Print all values in the list
   
-  * Use iterators for traversal from one node to the next
+  * Use iterators for traversing from one node to the next
   
 # Stack
 
@@ -34,6 +34,8 @@ Create and manipulate stacks with the following methods:
  
  * Print all values in the stack
 
+ * Use iterators for travering the stack
+
 # Queue
 
 Create and manipulate queues with the following methods:
@@ -48,7 +50,7 @@ Create and manipulate queues with the following methods:
  
  * Print all values in the queue
  
- * Use iterators for traversal from the front to the back of the queue
+ * Use iterators for travering the queue
 
 ---------------------------------------------------------
 
