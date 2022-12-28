@@ -55,8 +55,11 @@ public:
 	/// <param name="NodeToSet:"> New node that the previous pointer of the current node will point to. </param>
 	void SetPreviousNode(Node* NodeToSet) { m_PreviousNode = NodeToSet; }
 
-	/// <returns> Member variable representing the node value. </returns>
+	/// <returns> Node value by value. </returns>
 	T GetNodeValue() const { return m_NodeValue; }
+
+	/// <returns> Node value by value. </returns>
+	T& GetNodeValueAsReference() { return m_NodeValue; }
 
 	/// <returns> Member variable representing the next node pointer. </returns>
 	Node<T>* GetNextNode() const { return m_NextNode; };
@@ -66,14 +69,10 @@ public:
 
 private:
 
-	/// <summary>
-	/// Templated value that this node contains.
-	/// </summary>
+	// Templated value that this node contains.
 	T m_NodeValue;
 
-	/// <summary>
-	/// Pointer to the next node in the linked list structure.
-	/// </summary>
+	// Pointer to the next node in the linked list structure.
 	Node* m_NextNode;
 
 	/// <summary>

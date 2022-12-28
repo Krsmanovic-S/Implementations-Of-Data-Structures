@@ -12,7 +12,13 @@ int main()
 	CharList->RemoveNodeAtLocation(2);
 	FloatList->RemoveHeadNode();
 
-	IntegerList->PrintEntireList();
+	for (LinkedList<int>::Iterator it = IntegerList->begin(); it != IntegerList->end(); ++it)
+	{
+		std::cout << *it << " ";;
+	}
+
+	std::cout << '\n' << '\n';
+
 	CharList->PrintEntireList();
 	FloatList->PrintEntireList();
 

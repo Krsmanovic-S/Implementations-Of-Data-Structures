@@ -10,11 +10,14 @@ int main()
 	IntQueue->Push(44);
 	IntQueue->Push(10);
 
-	IntQueue->PrintQueue();
-
 	IntQueue->Pop();
 
-	std::cout << '\n' << IntQueue->Front() << '\n' << '\n';
+	for (Queue<int>::Iterator it = IntQueue->begin(); it != IntQueue->end(); ++it)
+	{
+		std::cout << *it << " ";
+	}
+
+	std::cout << '\n' << '\n';
 
 	CharQueue->Push('a');
 	CharQueue->Push('C');

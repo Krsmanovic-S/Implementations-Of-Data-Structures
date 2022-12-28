@@ -13,6 +13,49 @@ class LinkedList
 
 public:
 
+	class Iterator
+	{
+	public:
+
+		Iterator(Node<T>* Input) : IteratedNode(Input) {}
+
+		/// <summary>
+		/// Overloading the * operator to get the reference
+		/// of the node value that the iterator is pointing to.
+		/// </summary>
+		/// <returns> Iterators node value as reference. </returns>
+		T& operator*() { return IteratedNode->GetNodeValueAsReference(); }
+
+		// Overload the ++ operator to move to the next element.
+		Iterator& operator++() {
+			if (IteratedNode != nullptr)
+			{
+				IteratedNode = IteratedNode->GetNextNode();
+			}
+
+			return *this;
+		}
+
+		// Overload the != operator to compare iterators.
+		bool operator!=(const Iterator& OtherIterator)
+		{
+			return IteratedNode != OtherIterator.IteratedNode;
+		}
+
+	private:
+
+		// Pointer to the currently iterated element.
+		Node<T>* IteratedNode;
+	};
+
+	/// <returns> Iterator pointing to the beginning of the list. </returns>
+	LinkedList<T>::Iterator begin() { return Iterator(m_Head); }
+
+	/// <returns> Iterator pointing to the end of the list. </returns>
+	LinkedList<T>::Iterator end() { return Iterator(nullptr); }
+
+public:
+
 	/// <summary>
 	/// Takes in an initializer list, builds the class instance with it 
 	/// and assigns the head and tail nodes.
@@ -25,9 +68,7 @@ public:
 	/// <returns> Amount of nodes that are inside this entire list. </returns>
 	int GetListSize() const { return m_ListSize; };
 
-	/// <summary>
-	/// Displays all the node values with std::cout in head to tail order.  
-	/// </summary>
+	// Displays all the node values with std::cout in head to tail order.  
 	void PrintEntireList() const;
 
 	/// <summary>
@@ -42,9 +83,7 @@ public:
 	/// <param name="NodeValue:"> Value of the newly added node. </param>
 	void AppendNode(T NodeValue);
 
-	/// <summary>
-	/// Removes the head/first node of the list and moves the head to its next node.
-	/// </summary>
+	// Removes the head/first node of the list and moves the head to its next node.
 	void RemoveHeadNode();
 
 	/// <summary>
@@ -84,24 +123,16 @@ public:
 
 private:
 
-	/// <summary>
-	/// First Node of the linked list.
-	/// </summary>
+	// First Node of the linked list.
 	Node<T>* m_Head;
 
-	/// <summary>
-	/// Last Node of the linked list.
-	/// </summary>
+	// Last Node of the linked list.
 	Node<T>* m_Tail;
 
-	/// <summary>
-	/// Represents the number of Nodes inside the list.
-	/// </summary>
+	// Represents the number of Nodes inside the list.
 	int m_ListSize;
 
-	/// <summary>
-	/// Shows if this list is doubly linked or singly linked.
-	/// </summary>
+	// Shows if this list is doubly linked or singly linked.
 	bool m_IsDoublyLinked;
 };
 
