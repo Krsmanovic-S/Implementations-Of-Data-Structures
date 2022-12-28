@@ -18,6 +18,8 @@ Supports singly and doubly linked lists that are implemented with the following 
   
   * Print all values in the list
   
+  * Use iterators for traversal from one node to the next
+  
 # Stack
 
 Create and manipulate stacks with the following methods:
@@ -45,6 +47,8 @@ Create and manipulate queues with the following methods:
  * Check whether a queue is empty or not
  
  * Print all values in the queue
+ 
+ * Use iterators for traversal from the front to the back of the queue
 
 ---------------------------------------------------------
 
