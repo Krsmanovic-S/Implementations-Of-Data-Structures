@@ -1,4 +1,6 @@
-# C++ Implementation of the Linked List Data Structure
+The different structures are all **templated**, meaning that you can create them with different types, however they must be the same (i.e list of only integers, only floats etc..). Every method and variable is documented with the XML documentation in Visual Studio.
+
+# Linked List
 
 Supports singly and doubly linked lists that are implemented with the following features:
 
@@ -16,6 +18,34 @@ Supports singly and doubly linked lists that are implemented with the following 
   
   * Print all values in the list
   
-The list and the nodes are templated, meaning that you can create lists of different types, however they must be the same (i.e list of only integers, only floats etc..). Every method and variable is documented with the XML documentation in Visual Studio.
+# Stack
+
+Create and manipulate stacks with the following methods:
+
+ * Push a new value onto the stack
+ 
+ * Pop a value from the top of the stack
+ 
+ * Get the value located at the top
+ 
+ * Check whether a stack is empty or not
+ 
+ * Print all values in the stack
+
+# Queue
+
+Create and manipulate queues with the following methods:
+
+ * Push a new value onto the queue
+ 
+ * Pop a value from the front of the queue
+ 
+ * Get the value located at the front
+ 
+ * Check whether a queue is empty or not
+ 
+ * Print all values in the queue
+
+---------------------------------------------------------
 
 ``` IDE Used --> Visual Studio 2022 ```
