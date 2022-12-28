@@ -2,12 +2,19 @@
 
 #include <vector>
 
+/// <summary>
+/// Class representing a queue,
+/// a First-In-First-Out data structure.
+/// </summary>
 template <typename T>
 class Queue
 {
 
 public:
 
+	/// <summary>
+	/// Iterator for navigating the queue.
+	/// </summary>
 	class Iterator
 	{
 
@@ -63,20 +70,26 @@ public:
 
 	void PrintQueue();
 
+	// Pushes a value to the back of the queue.
 	void Push(T Val);
 
+	// Remove the value that is in front of the queue.
 	void Pop();
 
+	/// <returns> First value from the queue. </returns>
 	T Front() const { return m_QueueSize > 0 ? m_QueueVector[0] : 0; }
 
+	/// <returns> Last added value to the queue. </returns>
 	T Back() const { return m_QueueSize > 0 ? m_QueueVector[m_QueueSize - 1] : 0; }
 
-	bool Empty() const { return m_QueueSize > 0 ? true : false; }
+	/// <returns> True if the queue is empty, false otherwise. </returns>
+	bool Empty() const { return m_QueueSize > 0 ? false : true; }
 
 	int GetQueueSize() const { return m_QueueSize; }
 
 private:
 
+	// Vector for storing data that is inside the queue.
 	std::vector<T> m_QueueVector;
 
 	int m_QueueSize;
