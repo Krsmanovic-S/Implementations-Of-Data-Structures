@@ -1,7 +1,7 @@
 #pragma once
 
 #include <initializer_list>
-#include <Node.h>
+#include <node.h>
 
 /// <summary>
 /// Class representing a linked list, contains methods

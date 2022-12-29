@@ -1,4 +1,4 @@
-#include <Stack.h>
+#include <stack.h>
 #include <iostream>
 
 template<typename T>

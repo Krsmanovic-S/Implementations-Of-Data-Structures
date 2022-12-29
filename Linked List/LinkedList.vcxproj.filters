@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Main.cpp">
+    <ClCompile Include="src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\LinkedList.cpp">
+    <ClCompile Include="src\linked-list.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Node.h">
+    <ClInclude Include="src\node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\LinkedList.h">
+    <ClInclude Include="src\linked-list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

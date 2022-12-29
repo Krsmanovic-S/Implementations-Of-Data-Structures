@@ -147,12 +147,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\LinkedList.cpp" />
-    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\linked-list.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\LinkedList.h" />
-    <ClInclude Include="src\Node.h" />
+    <ClInclude Include="src\linked-list.h" />
+    <ClInclude Include="src\node.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
