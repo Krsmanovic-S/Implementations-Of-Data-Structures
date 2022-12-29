@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <iostream>
 
 template<typename T>
 class TreeNode
@@ -64,6 +65,14 @@ public:
 	/// </summary>
 	/// <returns> Number of nodes in the tree. </returns>
 	int getTreeSize(TreeNode<T>* root);
+
+	/// <summary>
+	/// Generates a dot file representation of a tree,
+	/// used by the Graphviz library to generate a png
+	/// file of the tree structure and node values.
+	/// </summary>
+	/// <param name="out"> Output stream where the dot file will be written. </param>
+	void generateDotFile(std::ostream& out);
 
 private:
 

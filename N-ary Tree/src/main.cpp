@@ -1,4 +1,6 @@
 #include <tree.cpp>
+#include <fstream>
+#include <stdlib.h>
 
 int main()
 {
@@ -7,24 +9,22 @@ int main()
 	TreeNode<int>* node_1 = new TreeNode<int>(2);
 	TreeNode<int>* node_2 = new TreeNode<int>(3);
 	TreeNode<int>* node_3 = new TreeNode<int>(4);
-
 	TreeNode<int>* node_4 = new TreeNode<int>(5);
 	TreeNode<int>* node_5 = new TreeNode<int>(6);
+	TreeNode<int>* node_6 = new TreeNode<int>(7);
+	TreeNode<int>* node_7 = new TreeNode<int>(8);
 
 	tree->getRoot()->addChild(node_1);
-	tree->getRoot()->addChild(node_2);
-	tree->getRoot()->addChild(node_3);
+	tree->getRoot()->addChild(node_4);
+	tree->getRoot()->addChild(node_5);
 
-	node_3->addChild(node_4);
-	node_3->addChild(node_5);
+	node_1->addChild(node_2);
+	node_2->addChild(node_3);
 
-	tree->preorderTraversal(tree->getRoot());
-	
-	std::cout << '\n';
+	node_5->addChild(node_6);
+	node_5->addChild(node_7);
 
-	tree->postorderTraversal(tree->getRoot());
+	std::ofstream dotFile("tree.dot");
 
-	std::cout << '\n' << '\n';
-	
-	std::cout << tree->getTreeSize(tree->getRoot());
+	tree->generateDotFile(dotFile);;
 }
