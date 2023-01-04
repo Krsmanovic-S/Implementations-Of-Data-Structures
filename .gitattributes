@@ -61,7 +61,3 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
-###############################################################################
-# Setting up language detection for C++ files
-#*.h linguist-language=C++
-#*.cpp linguist-language=C++
