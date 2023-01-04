@@ -2,48 +2,50 @@
 #include <iostream>
 
 template<typename T>
-void Stack<T>::Push(T Val)
+void Stack<T>::push(T data)
 {
-	m_StackVector.push_back(Val);
-	m_StackSize++;
+	m_stackVector.push_back(data);
+	m_stackSize++;
 }
 
 template<typename T>
-void Stack<T>::Pop()
+void Stack<T>::pop()
 {
-	if (m_StackSize != 0)
+	if (m_stackSize != 0)
 	{
-		m_StackVector.pop_back();
-		m_StackSize--;
+		std::cout << "Poped the top of the stack which is: " << m_stackVector[m_stackSize - 1] << '\n';
+
+		m_stackVector.pop_back();
+		m_stackSize--;
 	}
 	else { std::cerr << "Cannot pop from an empty stack." << '\n'; }
 }
 
 template<typename T>
-inline T Stack<T>::Top()
+inline T Stack<T>::top()
 {
-	if (m_StackSize != 0)
+	if (m_stackSize != 0)
 	{
-		return m_StackVector[m_StackSize - 1];
+		return m_stackVector[m_stackSize - 1];
 	}
 	
 	return 0;
 }
 
 template<typename T>
-inline bool Stack<T>::Empty()
+inline bool Stack<T>::empty()
 {
-	return m_StackSize > 0 ? false : true;
+	return m_stackSize > 0 ? false : true;
 }
 
 template<typename T>
-void Stack<T>::PrintStack()
+void Stack<T>::printStack()
 {
 	std::cout << "Stack order of elements from top to bottom: ";
 
-	for (int i = m_StackSize - 1; i >= 0; i--)
+	for (int i = m_stackSize - 1; i >= 0; i--)
 	{
-		std::cout << m_StackVector[i];
+		std::cout << m_stackVector[i];
 
 		if (i != 0) { std::cout << ", "; }
 		else { std::cout << "." << '\n'; }

@@ -65,8 +65,11 @@ public:
 	template <typename ... Args>
 	LinkedList(bool doubleLink = false, Args ... args);
 
+	// Deletes all the nodes in the list from head to tail.
+	~LinkedList();
+
 	/// <returns> Amount of nodes that are inside this entire list. </returns>
-	int getListSize() const { return m_listSize; };
+	int getListSize() const { return m_listSize; }
 
 	// Displays all the node values with std::cout in head to tail order.  
 	void printEntireList() const;
@@ -132,63 +135,6 @@ private:
 	// Represents the number of Nodes inside the list.
 	int m_listSize;
 
-	// Shows if this list is doubly linked or singly linked.
+	// Shows if this list is singly or doubly linked.
 	bool m_isDoublyLinked;
 };
-
-template<typename T>
-inline void LinkedList<T>::prependNode(T nodeData)
-{
-	Node<T>* newNode = new Node<T>(nodeData);
-
-	newNode->setNextNode(m_head);
-
-	if (m_isDoublyLinked == true) { m_head->setPreviousNode(newNode); }
-
-	m_head = newNode;
-}
-
-template<typename T>
-inline void LinkedList<T>::appendNode(T nodeData)
-{
-	if (m_isDoublyLinked == true) 
-	{ 
-		m_tail->setNextNode(new Node<T>(nodeData, nullptr, m_tail));
-	}
-	else { m_tail->setNextNode(new Node<T>(nodeData));	}
-
-	m_tail = m_tail->getNextNode();
-	m_listSize++;
-}
-
-template<typename T>
-inline void LinkedList<T>::removeHeadNode()
-{
-	Node<T>* nodeToRemove = m_head;
-
-	m_head = m_head->getNextNode();
-
-	if (m_isDoublyLinked == true) { m_head->setPreviousNode(nullptr); }
-
-	delete nodeToRemove;
-	m_listSize--;
-}
-
-template<typename T>
-inline void LinkedList<T>::removeTailNode()
-{
-	Node<T>* currentNode = m_head;
-
-	while (currentNode->getNextNode() != m_tail)
-	{
-		currentNode = currentNode->getNextNode();
-	}
-
-	delete currentNode->getNextNode();
-
-	currentNode->setNextNode(nullptr);
-
-	m_tail = currentNode;
-
-	m_listSize--;
-}

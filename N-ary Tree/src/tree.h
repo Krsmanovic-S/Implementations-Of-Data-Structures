@@ -9,7 +9,7 @@ class TreeNode
 
 public:
 
-	TreeNode(T data) : m_nodeData(data) {};
+	TreeNode(T data) : m_nodeData(data) {}
 
 	std::vector<TreeNode<T>*>& getChildren() { return m_children; }
 
@@ -43,16 +43,21 @@ private:
 	std::vector<TreeNode<T>*> m_children;
 };
 
+
 template<typename T>
 class Tree
 {
 
 public:
 
-	Tree(T rootData) : m_root(new TreeNode<T>(rootData)) {};
+	// Creates a new node for the root and assigns its data.
+	Tree(T rootData);
+
+	// Deletes all the nodes in the tree in a preorder traversal.
+	~Tree();
 
 	/// <returns> Root node of this tree. </returns>
-	TreeNode<T>* getRoot() const { return m_root; };
+	TreeNode<T>* getRoot() const { return m_root; }
 
 	// Prints the values in the tree with a preorder (left->right) traversal.
 	void preorderTraversal(TreeNode<T>* root) const;
@@ -71,8 +76,10 @@ public:
 	/// used by the Graphviz library to generate a png
 	/// file of the tree structure and node values.
 	/// </summary>
-	/// <param name="out"> Output stream where the dot file will be written. </param>
+	/// <param name="out:"> Output stream where the dot file will be written. </param>
 	void generateDotFile(std::ostream& out);
+
+	void deleteAllNodes(TreeNode<T>* node);
 
 private:
 

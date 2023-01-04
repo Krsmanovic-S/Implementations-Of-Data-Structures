@@ -1,6 +1,8 @@
 #include <tree.h>
 #include <unordered_map>
 #include <functional>
+#include <type_traits>
+#include <string>
 
 // Graphviz library
 #include <gvc.h>  
@@ -15,6 +17,32 @@ void TreeNode<T>::removeChild(int pos)
 	}
 
 	m_children.erase(m_children.begin() + pos);
+}
+
+// ------------------------------------------
+
+template<typename T>
+Tree<T>::Tree(T rootData)
+{
+    static_assert(
+        std::is_same<T, int>::value ||
+        std::is_same<T, float>::value ||
+        std::is_same<T, double>::value ||
+        std::is_same<T, char>::value ||
+        std::is_same<T, std::string>::value,
+        "Type must be int, float, double, char, or std::string.");
+
+    m_root = new TreeNode<T>(rootData);
+}
+
+template<typename T>
+Tree<T>::~Tree()
+{
+    this->deleteAllNodes(m_root);
+
+    m_root = nullptr;
+
+    delete m_root;
 }
 
 template<typename T>
@@ -110,4 +138,19 @@ void Tree<T>::generateDotFile(std::ostream& out)
     // Adding a closing bracked to the digraph statement
     // at the beginning of the function to complete it.
     out << "}" << std::endl;
+}
+
+template<typename T>
+void Tree<T>::deleteAllNodes(TreeNode<T>* node)
+{
+    if (node == nullptr) { return; }
+
+    std::vector<TreeNode<T>*> nodeChildren = node->getChildren();
+
+    for (int i = 0; i < nodeChildren.size(); i++)
+    {
+        this->deleteTreeNode(nodeChildren[i]);
+    }
+
+    delete node;
 }

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <type_traits>
+#include <string>
 
 /// <summary>
 /// Class representing a queue,
@@ -21,7 +23,7 @@ public:
 	public:
 		
 		Iterator(Queue<T>* inputQueue, int position) : 
-			m_queuePointer(inputQueue), m_position(position) {};
+			m_queuePointer(inputQueue), m_position(position) {}
 
 		/// <summary>
 		/// Overloading the * operator to return the value that is inside
@@ -64,9 +66,17 @@ public:
 
 	Queue() 
 	{
+		static_assert(
+			std::is_same<T, int>::value ||
+			std::is_same<T, float>::value ||
+			std::is_same<T, double>::value ||
+			std::is_same<T, char>::value ||
+			std::is_same<T, std::string>::value,
+			"Type must be int, float, double, char, or std::string.");
+
 		m_queueVector = {};
 		m_queueSize = 0;
-	};
+	}
 
 	void printQueue();
 

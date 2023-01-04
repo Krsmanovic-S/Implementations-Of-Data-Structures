@@ -27,6 +27,8 @@ void Queue<T>::pop()
 {
 	if (m_queueSize > 0)
 	{
+		std::cout << "Poped off the front of the queue which is: " << *m_queueVector.begin() << '\n';
+
 		m_queueVector.erase(m_queueVector.begin());
 		m_queueSize--;
 	}

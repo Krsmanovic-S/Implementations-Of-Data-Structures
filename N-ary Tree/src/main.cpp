@@ -1,6 +1,5 @@
 #include <tree.cpp>
 #include <fstream>
-#include <stdlib.h>
 
 int main()
 {
@@ -26,5 +25,5 @@ int main()
 
 	std::ofstream dotFile("tree.dot");
 
-	tree->generateDotFile(dotFile);;
+	tree->generateDotFile(dotFile);
 }

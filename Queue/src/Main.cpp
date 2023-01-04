@@ -10,12 +10,14 @@ int main()
 	intQueue->push(44);
 	intQueue->push(10);
 
-	intQueue->pop();
-
 	for (Queue<int>::Iterator it = intQueue->begin(); it != intQueue->end(); ++it)
 	{
 		std::cout << *it << " ";
 	}
+
+	std::cout << '\n';
+
+	intQueue->pop();
 
 	std::cout << '\n' << '\n';
 
@@ -27,10 +29,6 @@ int main()
 	charQueue->printQueue();
 
 	charQueue->pop();
-
-	std::cout << '\n' << charQueue->front() << '\n' << '\n';
-
-	charQueue->printQueue();
 
 	return 0;
 }

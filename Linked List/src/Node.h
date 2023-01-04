@@ -16,7 +16,7 @@ public:
 	/// </summary>
 	/// <param name="inputData:"> Templated parameter for the value of the node. </param>
 	Node(T inputData) :
-		m_nodeData(inputData), m_nextNode(nullptr), m_previousNode(nullptr) {};
+		m_nodeData(inputData), m_nextNode(nullptr), m_previousNode(nullptr) {}
 
 	/// <summary>
 	/// Constructor for setting both the value  
@@ -25,7 +25,7 @@ public:
 	/// <param name="inputData:"> Templated parameter for the value of the node. </param>
 	/// <param name="nextNode:"> Node to which this one is pointing to. </param>
 	Node(T inputData, Node* nextNode) :
-		m_nodeData(inputData), m_nextNode(nextNode), m_previousNode(nullptr) {};
+		m_nodeData(inputData), m_nextNode(nextNode), m_previousNode(nullptr) {}
 
 	/// <summary>
 	/// Constructor for setting the value, the next node 
@@ -35,7 +35,7 @@ public:
 	/// <param name="nextNode:"> Node to which this one is pointing to. </param>
 	/// <param name="nextNode:"> Previous node to which this one is pointing to. </param>
 	Node(T inputData, Node* nextNode, Node* prevNode) :
-		m_nodeData(inputData), m_nextNode(nextNode), m_previousNode(prevNode) {};
+		m_nodeData(inputData), m_nextNode(nextNode), m_previousNode(prevNode) {}
 	
 	/// <summary>
 	/// Setter for the member m_nodeData.
@@ -62,10 +62,10 @@ public:
 	T& getNodeDataAsReference() { return m_nodeData; }
 
 	/// <returns> Member variable representing the next node pointer. </returns>
-	Node<T>* getNextNode() const { return m_nextNode; };
+	Node<T>* getNextNode() const { return m_nextNode; }
 
 	/// <returns> Member variable representing the previous node pointer. </returns>
-	Node<T>* getPreviousNode() const { return m_previousNode; };
+	Node<T>* getPreviousNode() const { return m_previousNode; }
 
 private:
 

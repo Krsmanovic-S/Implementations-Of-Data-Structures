@@ -4,9 +4,9 @@ int main()
 {
 	Stack<int>* intStack = new Stack<int>();
 
-	intStack->Push(5);
-	intStack->Push(7);
-	intStack->Push(10);
+	intStack->push(5);
+	intStack->push(7);
+	intStack->push(10);
 
 	for (Stack<int>::Iterator it = intStack->begin(); it != intStack->end(); ++it)
 	{
@@ -15,9 +15,9 @@ int main()
 
 	std::cout << '\n' << '\n';
 
-	intStack->Pop();
+	intStack->pop();
 
-	std::cout << "Stack top: " << intStack->Top() << '\n';
+	std::cout << "Stack top: " << intStack->top() << '\n';
 
 	delete intStack;
 

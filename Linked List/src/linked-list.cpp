@@ -1,10 +1,20 @@
 #include <linked-list.h>
 #include <iostream>
+#include <type_traits>
+#include <string>
 
 template<typename T>
 template<typename ...Args>
 LinkedList<T>::LinkedList(bool doubleLink, Args ... args)
 {
+	static_assert(
+		std::is_same<T, int>::value ||
+		std::is_same<T, float>::value ||
+		std::is_same<T, double>::value ||
+		std::is_same<T, char>::value ||
+		std::is_same<T, std::string>::value,
+		"Type must be int, float, double, char, or std::string.");
+
 	std::initializer_list<T> inputList{ args... };
 
 	m_isDoublyLinked = doubleLink;
@@ -35,6 +45,22 @@ LinkedList<T>::LinkedList(bool doubleLink, Args ... args)
 }
 
 template<typename T>
+LinkedList<T>::~LinkedList()
+{
+	Node<T>* currentNode = m_head;
+	Node<T>* nextNode;
+
+	while (currentNode != nullptr)
+	{
+		nextNode = currentNode->getNextNode();
+
+		delete currentNode;
+
+		currentNode = nextNode;
+	}
+}
+
+template<typename T>
 void LinkedList<T>::printEntireList() const
 {
 	Node<T>* currentNode = m_head;
@@ -57,28 +83,60 @@ void LinkedList<T>::printEntireList() const
 }
 
 template<typename T>
-bool LinkedList<T>::isCyclicList()
+inline void LinkedList<T>::prependNode(T nodeData)
 {
-	if (m_head == nullptr) { return false; }
+	Node<T>* newNode = new Node<T>(nodeData);
 
-	Node<T>* slowPointer = m_head;
-	Node<T>* fastPointer = m_head;
+	newNode->setNextNode(m_head);
 
-	while (slowPointer != nullptr && fastPointer != nullptr)
+	if (m_isDoublyLinked == true) { m_head->setPreviousNode(newNode); }
+
+	m_head = newNode;
+}
+
+template<typename T>
+inline void LinkedList<T>::appendNode(T nodeData)
+{
+	if (m_isDoublyLinked == true)
 	{
-		slowPointer = slowPointer->getNextNode();
+		m_tail->setNextNode(new Node<T>(nodeData, nullptr, m_tail));
+	}
+	else { m_tail->setNextNode(new Node<T>(nodeData)); }
 
-		fastPointer = fastPointer->getNextNode();
+	m_tail = m_tail->getNextNode();
+	m_listSize++;
+}
 
-		if (fastPointer != nullptr)
-		{
-			fastPointer = fastPointer->getNextNode();
-		}
+template<typename T>
+inline void LinkedList<T>::removeHeadNode()
+{
+	Node<T>* nodeToRemove = m_head;
 
-		if (slowPointer == fastPointer) { return true; }
+	m_head = m_head->getNextNode();
+
+	if (m_isDoublyLinked == true) { m_head->setPreviousNode(nullptr); }
+
+	delete nodeToRemove;
+	m_listSize--;
+}
+
+template<typename T>
+inline void LinkedList<T>::removeTailNode()
+{
+	Node<T>* currentNode = m_head;
+
+	while (currentNode->getNextNode() != m_tail)
+	{
+		currentNode = currentNode->getNextNode();
 	}
 
-	return false;
+	delete currentNode->getNextNode();
+
+	currentNode->setNextNode(nullptr);
+
+	m_tail = currentNode;
+
+	m_listSize--;
 }
 
 template<typename T>
@@ -146,4 +204,29 @@ void LinkedList<T>::removeNodeAtLocation(int removePosition)
 	currentNode->setNextNode(secondNextNode);
 
 	m_listSize--;
+}
+
+template<typename T>
+bool LinkedList<T>::isCyclicList()
+{
+	if (m_head == nullptr) { return false; }
+
+	Node<T>* slowPointer = m_head;
+	Node<T>* fastPointer = m_head;
+
+	while (slowPointer != nullptr && fastPointer != nullptr)
+	{
+		slowPointer = slowPointer->getNextNode();
+
+		fastPointer = fastPointer->getNextNode();
+
+		if (fastPointer != nullptr)
+		{
+			fastPointer = fastPointer->getNextNode();
+		}
+
+		if (slowPointer == fastPointer) { return true; }
+	}
+
+	return false;
 }
