@@ -1,42 +1,75 @@
-The different structures are all **templated**, meaning that you can create them with different types, however they must be the same (i.e list of only integers, only floats etc..). Every method and variable is documented with the XML documentation in Visual Studio.
+![title](https://user-images.githubusercontent.com/103185975/210466763-68bda1d3-de95-4385-a395-d8fc930f8ef9.png)
 
-# Linked List
+- - - -
 
-Supports singly and doubly linked lists that are implemented with the following features:
+:wave: Welcome to the "Implementations of Data Structures" repository! This repository contains various implementations of common data structures in C++. These data structures include:
 
-  * Append a node
+&nbsp;&nbsp;:small_blue_diamond: Linked lists
+
+&nbsp;&nbsp;:small_blue_diamond: Stacks
+
+&nbsp;&nbsp;:small_blue_diamond: Queues
+
+&nbsp;&nbsp;:small_blue_diamond: Trees
+
+Each data structure is implemented as a standalone class, with member functions for common operations such as ___insertion, deletion, printing and searching___. The implementation is designed to be easy to understand and use, with well-documented code and clear function names. The different structures are all ___templated___, currently supporting the following types: ___integer, float, double, char and std::string___.
+
+This repository is a great resource for anyone looking to learn about data structures or brush up on their skills. Whether you are a beginner or an experienced programmer, you will find something of value here. I hope you enjoy and let's dive straight into it!
+
+- - - -
+
+## Linked List
+
+This is a data structure consists of two parts - individual nodes and a class for the list itself. ___Nodes___ are very simple, each has these key elements:
+  * **Data** represented in that node
+  * Pointer to the **next node** in the chain
+  * Pointer to the **previous node** in the chain
+
+We only use the ___previous node___ pointer when we are dealing with doubly linked lists, in singly linked ones this information is not needed. Lists themselves have just the information about the first node in that list, called the ___head___, which is used for traversal alongside the entire list. This is done by utilizing the 'next node' pointer when assembling the list. The end of the list is called the ___tail___, this is the node that has the next pointer set to nullptr, which means the list is null-terminated.
+
+Implementation currently supports singly and doubly linked lists that are implemented with the following features:
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Append/Prepend a node
   
-  * Prepend a node
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Remove head/tail node
   
-  * Remove tail node
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Insert/delete a node in a desired position
   
-  * Remove head node
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Print all node values in the list
   
-  * Insert a node in a desired location
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Use iterators for traversing from one node to the next
   
-  * Remove a node from a desired location
-  
-  * Print all node values in the list
-  
-  * Use iterators for traversing from one node to the next
-  
-# N-ary Trees
+## N-ary Trees
 
-Create and manipulate N-ary trees, where each node can have as many children as it wants. Features include:
+An n-ary tree is a tree data structure in which each node has at most ___n___ children. N-ary trees are a generalization of binary trees, which are trees in which each node has at most two children. Each node has two parts:
+  * ___Data___ that is stored inside the node
+  * ___An array___ of all the children of that node
 
-* Add a child node to an existing one
+The class for the tree itself just stores the information about the first node in the tree, called the ___root___ node. Every other node is accessed by traversing the tree using this root node. Common traversals include:
 
-* Insert a child node at a specific place
+:small_blue_diamond: ___Pre-order traversal___: In a pre-order traversal, the root node is visited first, followed by the subtrees of the left child, then the subtrees of the right child.
 
-* Remove a child node at a specific index
+:small_blue_diamond: ___In-order traversal___: In an in-order traversal, the left subtree of the root node is visited first, followed by the root node itself, then the right subtree.
 
-* Preorder traversal
+:small_blue_diamond: ___Post-order traversal___: In a post-order traversal, the subtrees of the left child are visited first, followed by the subtrees of the right child, and finally the root node is visited.
 
-* Postorder traversal
+:small_blue_diamond: ___Level-order traversal___: In a level-order traversal, the nodes of the tree are visited level by level, starting from the root node and proceeding through the levels from top to bottom.
 
-* Print all node values in the tree
+![text_separator](https://user-images.githubusercontent.com/103185975/210472648-353e2123-a800-4f99-9e63-7d8178c468db.png)
 
-* Calculate the size of the tree (total nodes)
+Implementation currently supports the following methods:
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Add a child node to an existing one
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Insert a child node at a specific place
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Remove a child node at a specific index
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Preorder/Postorder traversal
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Print all node values in the tree
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Access the size of the tree (total nodes)
 
 I have also included the **Graphviz** library here for generating the visual representation of the tree.
 This library is used by first generating the dot file and then using it to produce a png file. 
@@ -45,40 +78,40 @@ Example picture:
 
 ![tree](https://user-images.githubusercontent.com/103185975/209895522-3c513da2-d00a-4be5-9d3b-5dde4725574e.png)
 
-# Stack
+## Stack
 
-Create and manipulate stacks with the following methods:
+A stack is a linear data structure that allows elements to be added and removed only from the top of the stack. This behavior is known as last-in, first-out (___LIFO___) and is similar to a stack of plates in a cafeteria. Here we are implementing it with the ___std::vector___ container, but the STL library does offer it's own std::stack.
 
- * Push a new value onto the stack
- 
- * Pop a value from the top of the stack
- 
- * Get the value located at the top
- 
- * Check whether a stack is empty or not
- 
- * Print all values in the stack
+Implementation currently supports the following methods:
 
- * Use iterators for travering the stack
-
-# Queue
-
-Create and manipulate queues with the following methods:
-
- * Push a new value onto the queue
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Push a new value onto the stack
  
- * Pop a value from the front of the queue
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Pop a value from the top of the stack
  
- * Get the value located at the front
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Get the value located at the top
  
- * Check whether a queue is empty or not
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Check whether a stack is empty or not
  
- * Print all values in the queue
- 
- * Use iterators for travering the queue
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Print all values in the stack
 
----------------------------------------------------------
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Use iterators for travering the stack
 
-``` IDE Used     --> Visual Studio 2022 ```
+## Queue
 
-``` C++ Standard --> C++ 20 ```
+A queue is a linear data structure that allows elements to be added only to the back of the queue and removed only from the front of the queue. This behavior is known as first-in, first-out (___FIFO___) and is similar to a line of people waiting in line at the mall. We are implementing it here with the ___std::vector___ container, similarly to how we did the stack.
+
+Implementation currently supports the following methods:
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Push a new value onto the queue
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Pop a value from the front of the queue
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Get the value located at the front
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Check whether a queue is empty or not
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Print all values in the queue
+ 
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Use iterators for travering the queue
+
+- - - -
