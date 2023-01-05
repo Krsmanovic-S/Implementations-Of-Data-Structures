@@ -18,6 +18,28 @@ This repository is a great resource for anyone looking to learn about data struc
 
 - - - -
 
+## Hash Table
+
+A hash table is a data structure that stores a set of key-value pairs and uses a ___hash function___ to map keys to indices in an array. When a key-value pair is inserted into the hash table, the hash function is used to determine the index in the array where the value should be stored. If the index is already occupied by another value, then the hash table uses a collision resolution strategy to find an alternative location for the value.
+
+With this implementation, we are handling collisions with a closed addressing method utilizing linked lists. To put it simply, whenever a value needs to go into a space where we already have something, we will just attach it to the end of the linked list there. The table that is implemented here is using integers as keys and linked lists as values. The nodes in these lists are storing strings.
+
+  * The hash method that we are using is the ___FNV-1a algorithm___, this method does not have to be used but has been proven to produce good hash values
+
+Implementation currently supports the following methods:
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Calculate a hash key for any given string value
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Insert a value (no duplicates allowed)
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Remove a value
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Check if the table is empty
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Print all key/value pairs
+
+&nbsp;&nbsp;&nbsp;&nbsp;:small_blue_diamond: Use iterators to traverse the table
+
 ## Linked List
 
 This is a data structure consists of two parts - individual nodes and a class for the list itself. ___Nodes___ are very simple, each has these key elements:
