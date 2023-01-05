@@ -1,7 +1,7 @@
 #pragma once
 
-#include <initializer_list>
 #include <node.h>
+#include <initializer_list>
 
 /// <summary>
 /// Class representing a linked list, contains methods
@@ -68,8 +68,11 @@ public:
 	// Deletes all the nodes in the list from head to tail.
 	~LinkedList();
 
+	/// <returns> Head of the linked list. </returns>
+	inline Node<T>* getRootNode() const { return m_head; };
+
 	/// <returns> Amount of nodes that are inside this entire list. </returns>
-	int getListSize() const { return m_listSize; }
+	inline int getListSize() const { return m_listSize; }
 
 	// Displays all the node values with std::cout in head to tail order.  
 	void printEntireList() const;
@@ -86,6 +89,15 @@ public:
 	/// <param name="NodeValue:"> Value of the newly added node. </param>
 	void appendNode(T nodeData);
 
+	/// <summary>
+	/// Creates a new node and inserts it into the list at the specified
+	/// location only if the location of the insert is valid. Adjusts the
+	/// newly created order of nodes to follow the singly linked list structure.
+	/// </summary>
+	/// <param name="NodeValue:"> Value of the node that is going to be inserted. </param>
+	/// <param name="InsertPosition:"> Position of where the insertion happens (0 is the starting position).</param>
+	void insertNodeAtLocation(T nodeData, int insertPosition);
+
 	// Removes the head/first node of the list and moves the head to its next node.
 	void removeHeadNode();
 
@@ -96,23 +108,11 @@ public:
 	void removeTailNode();
 
 	/// <summary>
-	/// Creates a new node and inserts it into the list at the specified
-	/// location only if the location of the insert is valid. Adjusts the
-	/// newly created order of nodes to follow the singly linked list structure.
-	/// </summary>
-	/// <param name="NodeValue:"> Value of the node that is going to be inserted. </param>
-	/// <param name="InsertPosition:"> Position of where the insertion happens (0 is the starting position).</param>
-	void insertNodeAtLocation(T nodeData, int insertPosition);
-
-	/// <summary>
 	/// Removes a node at the specified location if that location is valid.
 	/// Adjusts the remaining nodes to follow the singly linked list structure.
 	/// </summary>
 	/// <param name="RemovePosition:"> Position of where the deletion happens. </param>
 	void removeNodeAtLocation(int removePosition);
-
-	/// <returns> Head of the linked list. </returns>
-	Node<T>* getRootNode() const { return m_head; }
 
 	/// <summary>
 	/// Checks whether a linked list is cyclic by using

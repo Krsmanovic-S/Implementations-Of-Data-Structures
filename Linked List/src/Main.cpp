@@ -10,7 +10,7 @@ int main()
 
 	for (LinkedList<int>::Iterator it = integerList->begin(); it != integerList->end(); ++it)
 	{
-		std::cout << *it << " - ";
+		std::cout << *it << " <-> ";
 	}
 
 	std::cout << '\n' << '\n';

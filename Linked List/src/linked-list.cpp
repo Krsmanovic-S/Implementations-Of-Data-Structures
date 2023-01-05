@@ -1,7 +1,6 @@
 #include <linked-list.h>
-#include <iostream>
 #include <type_traits>
-#include <string>
+#include <iostream>
 
 template<typename T>
 template<typename ...Args>
@@ -108,38 +107,6 @@ inline void LinkedList<T>::appendNode(T nodeData)
 }
 
 template<typename T>
-inline void LinkedList<T>::removeHeadNode()
-{
-	Node<T>* nodeToRemove = m_head;
-
-	m_head = m_head->getNextNode();
-
-	if (m_isDoublyLinked == true) { m_head->setPreviousNode(nullptr); }
-
-	delete nodeToRemove;
-	m_listSize--;
-}
-
-template<typename T>
-inline void LinkedList<T>::removeTailNode()
-{
-	Node<T>* currentNode = m_head;
-
-	while (currentNode->getNextNode() != m_tail)
-	{
-		currentNode = currentNode->getNextNode();
-	}
-
-	delete currentNode->getNextNode();
-
-	currentNode->setNextNode(nullptr);
-
-	m_tail = currentNode;
-
-	m_listSize--;
-}
-
-template<typename T>
 void LinkedList<T>::insertNodeAtLocation(T nodeData, int insertPosition)
 {
 	if (insertPosition < 0 || insertPosition > m_listSize - 1)
@@ -173,6 +140,42 @@ void LinkedList<T>::insertNodeAtLocation(T nodeData, int insertPosition)
 	insertNode->setNextNode(nextNode);
 
 	return;
+}
+
+template<typename T>
+inline void LinkedList<T>::removeHeadNode()
+{
+	if (m_head == nullptr) { return; }
+
+	Node<T>* nodeToRemove = m_head;
+
+	m_head = m_head->getNextNode();
+
+	if (m_isDoublyLinked == true) { m_head->setPreviousNode(nullptr); }
+
+	delete nodeToRemove;
+	m_listSize--;
+}
+
+template<typename T>
+inline void LinkedList<T>::removeTailNode()
+{
+	if (m_tail == nullptr) { return; }
+
+	Node<T>* currentNode = m_head;
+
+	while (currentNode->getNextNode() != m_tail)
+	{
+		currentNode = currentNode->getNextNode();
+	}
+
+	delete currentNode->getNextNode();
+
+	currentNode->setNextNode(nullptr);
+
+	m_tail = currentNode;
+
+	m_listSize--;
 }
 
 template<typename T>
